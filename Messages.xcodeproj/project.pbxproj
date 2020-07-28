@@ -19,6 +19,7 @@
 		D5A3FCB624CFC85F001642D1 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A3FCB524CFC85F001642D1 /* VideoPlayerViewController.swift */; };
 		D5A3FCB824CFC87E001642D1 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A3FCB724CFC87E001642D1 /* NewConversationViewController.swift */; };
 		D5A3FCBA24CFC885001642D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A3FCB924CFC885001642D1 /* ProfileViewController.swift */; };
+		D5A3FCBC24D0B6E8001642D1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A3FCBB24D0B6E8001642D1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D5A3FCB524CFC85F001642D1 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		D5A3FCB724CFC87E001642D1 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		D5A3FCB924CFC885001642D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D5A3FCBB24D0B6E8001642D1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				D5A3FC9524CFC5FC001642D1 /* SceneDelegate.swift */,
 				D5A3FC9C24CFC5FE001642D1 /* Assets.xcassets */,
 				D5A3FC9E24CFC5FE001642D1 /* LaunchScreen.storyboard */,
+				D5A3FCBB24D0B6E8001642D1 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				D5A3FCB824CFC87E001642D1 /* NewConversationViewController.swift in Sources */,
 				D5A3FCAE24CFC767001642D1 /* ConversationsViewController.swift in Sources */,
 				D5A3FCB624CFC85F001642D1 /* VideoPlayerViewController.swift in Sources */,
+				D5A3FCBC24D0B6E8001642D1 /* Extensions.swift in Sources */,
 				D5A3FC9424CFC5FC001642D1 /* AppDelegate.swift in Sources */,
 				D5A3FCBA24CFC885001642D1 /* ProfileViewController.swift in Sources */,
 				D5A3FC9624CFC5FC001642D1 /* SceneDelegate.swift in Sources */,
