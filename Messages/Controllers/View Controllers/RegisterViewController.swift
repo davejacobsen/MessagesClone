@@ -21,6 +21,9 @@ class RegisterViewController: UIViewController {
         imageView.image = UIImage(systemName: "person")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }()
     
@@ -67,34 +70,34 @@ class RegisterViewController: UIViewController {
     }()
     
     private let firstNameField: UITextField = {
-         let field = UITextField()
-         field.autocorrectionType = .no
-         field.autocapitalizationType = .none
-         field.returnKeyType = .continue
-         field.layer.cornerRadius = 12
-         field.layer.borderWidth = 1
-         field.layer.borderColor = UIColor.lightGray.cgColor
-         field.placeholder = "First name..."
-         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-         field.leftViewMode = .always
-         field.backgroundColor = .white
-         return field
-     }()
+        let field = UITextField()
+        field.autocorrectionType = .no
+        field.autocapitalizationType = .none
+        field.returnKeyType = .continue
+        field.layer.cornerRadius = 12
+        field.layer.borderWidth = 1
+        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.placeholder = "First name..."
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        field.leftViewMode = .always
+        field.backgroundColor = .white
+        return field
+    }()
     
     private let lastNameField: UITextField = {
-         let field = UITextField()
-         field.autocorrectionType = .no
-         field.autocapitalizationType = .none
-         field.returnKeyType = .continue
-         field.layer.cornerRadius = 12
-         field.layer.borderWidth = 1
-         field.layer.borderColor = UIColor.lightGray.cgColor
-         field.placeholder = "Last name..."
-         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-         field.leftViewMode = .always
-         field.backgroundColor = .white
-         return field
-     }()
+        let field = UITextField()
+        field.autocorrectionType = .no
+        field.autocapitalizationType = .none
+        field.returnKeyType = .continue
+        field.layer.cornerRadius = 12
+        field.layer.borderWidth = 1
+        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.placeholder = "Last name..."
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        field.leftViewMode = .always
+        field.backgroundColor = .white
+        return field
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +131,7 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func changeProfilePicTapped() {
-        print("change pic called")
+        presentPhotoActionSheet()
     }
     
     override func viewDidLayoutSubviews() {
@@ -141,7 +144,9 @@ class RegisterViewController: UIViewController {
         firstNameField.frame = CGRect(x: 30, y: passwordField.bottom + 10, width: scrollView.width - 60, height: 52)
         lastNameField.frame = CGRect(x: 30, y: firstNameField.bottom + 10, width: scrollView.width - 60, height: 52)
         registerButton.frame = CGRect(x: 30, y: lastNameField.bottom + 10, width: scrollView.width - 60, height: 52)
-
+        
+        imageView.layer.cornerRadius = imageView.width/2.0
+        
     }
     
     @objc private func registerButtonTapped() {
@@ -183,3 +188,54 @@ extension RegisterViewController: UITextFieldDelegate {
     }
 }
 
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func presentPhotoActionSheet() {
+        
+        let title = "Profile Picture"
+        let message = ""
+        let selectActionTitle = "Select photo"
+        let takeActionTitle = "Take photo"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: selectActionTitle, style: .default, handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+        }))
+        alert.addAction(UIAlertAction(title: takeActionTitle, style: .default, handler: { [weak self] _ in
+            self?.presentCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        print(info)
+        
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
+        
+        self.imageView.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
