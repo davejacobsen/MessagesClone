@@ -6,5 +6,8 @@ target 'Messages' do
   use_frameworks!
 
   # Pods for Messages
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
 
 end

@@ -1,12 +1,12 @@
-# MessagesClone(in progress)
-Clone of iPhone Messages app
+# Messages Clone(in progress)
+Clone of iPhone Messages app.
 
-Current features
+Current features:
 - 100% programmatic UI
 - Log in and sign up fields with profile picture selection
 
 On the way:
 - Firebase backend
-- Chat conversations
+- Realtime chat conversations
 - Share images and videos
 - Remote notifications
