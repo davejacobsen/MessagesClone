@@ -6,8 +6,14 @@ target 'Messages' do
   use_frameworks!
 
   # Pods for Messages
+
+# Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+
+# Facebook login
+pod 'FBSDKLoginKit'
+
 
 end

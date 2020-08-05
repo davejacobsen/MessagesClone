@@ -2,11 +2,13 @@
 Clone of iPhone Messages app.
 
 Current features:
-- 100% programmatic UI
+- Programmatic UI
+- Firebase backend
 - Log in and sign up fields with profile picture selection
+- Log in with Facebook
 
 On the way:
-- Firebase backend
+- Log in with Google
 - Realtime chat conversations
 - Share images and videos
 - Remote notifications
