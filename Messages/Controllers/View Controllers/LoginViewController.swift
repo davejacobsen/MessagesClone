@@ -81,7 +81,6 @@ class LoginViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         
-        
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
@@ -99,7 +98,6 @@ class LoginViewController: UIViewController {
         loginButton.frame = CGRect(x: 30, y: passwordField.bottom + 10, width: scrollView.width - 60, height: 52)
     }
     
-    
     @objc private func loginButtonTapped() {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -108,7 +106,10 @@ class LoginViewController: UIViewController {
             alertUserLoginError()
             return
         }
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
+            
+            guard let StrongSelf = self else { return }
+            
             guard let result = authResult, error == nil else {
                 print("error logging in user with email: \(email)")
                 return
@@ -116,7 +117,8 @@ class LoginViewController: UIViewController {
             
             let user = result.user
             print("logged in user: \(user)")
-        }
+            StrongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        })
         
     }
     
